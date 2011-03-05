@@ -1,4 +1,4 @@
-package lib ;
+// package lib ;
 
   
 import java.util.Random ;
@@ -453,7 +453,8 @@ public class MatR {
   }
   
   /**
-  * transpose la matrice
+  * transpose la 
+ice
   * @return la matrice transposée (this)
   **/
   public MatR transpose(){
@@ -908,7 +909,7 @@ public class MatR {
   /**
   * définition du format (longueur, décimales, notation, espaces)
   **/
-  public void setFom(int l, int d, boolean e, int sp){ _l=l;_d=d ;_sp=sp; _e=e; }
+  public void setForm(int l, int d, boolean e, int sp){ _l=l;_d=d ;_sp=sp; _e=e; }
   
   /**
   * définition du format à partir d'un objet Form
