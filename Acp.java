@@ -2,7 +2,7 @@ import java.* ;
 // import java MatR aussi!!!
 
 class Acp {
-    boolean donnee ; // matrice des données
+    MatR donnee ; // matrice des données
 
     boolean reduit ; // si la matrice doit être réduite ou pas
     boolean centre ; // si la matrice doit être centree ou pas
@@ -29,7 +29,7 @@ class Acp {
 	// calcul des valeurs propres et vecteurs propres
 	propre(vecteurPropre,valeurPropre);
 
-	MatR temp = donnee.XtX();
+	correlation = donnee.XtX();
 	
     }
 
