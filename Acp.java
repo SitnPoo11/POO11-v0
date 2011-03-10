@@ -22,8 +22,8 @@ class Acp {
 
     public Acp(MatR m,boolean b1,boolean b2,MatR pd) {
 	donnee = m;
-	reduit = b1;
-	centre = b2;
+	reduit = b2;
+	centre = b1;
 	ponderation = pd;
 
 	// centrage et réduction des données si spécifié
@@ -32,12 +32,18 @@ class Acp {
 	if (reduit)
 	    donnee = donnee.reduire();
 	// calcul des valeurs propres et vecteurs propres
-
+	//System.out.println("nbr de lignes :"+donnee.n());
 	correlation = donnee.XtX();
+	//System.out.println(1.0/( (double) donnee.n() ) );
+	double d = 1.0/( (double) donnee.n() ) ;
+	//System.out.println(d);
+	correlation = correlation.multCste(d);
 	vecteurPropre = new MatR(donnee.n(),donnee.p(),0);
-	valeurPropre = new MatR(1,donnee.p(),0);
+	valeurPropre = new MatR(donnee.p(),7,0);
 
 	propre(vecteurPropre,valeurPropre);
+	
+	valeurPropre.afficheSimple("");
 
 	//correlation = donnee.XtX();
 	
@@ -46,7 +52,7 @@ class Acp {
 	MatR temp=valeurPropre.vectToDiag();
 	MatR temp2=temp.sqrt().inverse();
 	MatR comp2=composantes.multMat(temp2);
-	 variable=donnee.transpose().multMat(comp2);
+	variable=donnee.transpose().multMat(comp2);
 
 
     }
@@ -59,7 +65,8 @@ class Acp {
 
     public static void main (String [] args) throws Exception {
 	MatR donnee=new MatR (args[0]);
-	Acp acp=new Acp (donnee,false,false,new MatR(1,donnee.n(),1));
+	donnee.afficheSimple("");
+	Acp acp=new Acp (donnee,true,false,new MatR(1,donnee.n(),1));
 	(acp.valeurPropre).afficheSimple("toto");
     }	
 }
