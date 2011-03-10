@@ -1,3 +1,13 @@
+/** Avant de compiler ce fichier, taper dans le terminal :
+    export CLASSPATH = ..:.;
+**/
+
+/** 
+ *  Cette classe de tests n'utilise pas jUnit.
+ *  Elle n'est là que pour voir comment récupérer 
+ *  un fichier txt.
+ **/
+
 public class TestMatR2{
 
     public static void main (String [] args){
