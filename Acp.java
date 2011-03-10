@@ -43,16 +43,22 @@ class Acp {
 
 	propre(vecteurPropre,valeurPropre);
 	
-	valeurPropre.afficheSimple("");
+	//valeurPropre.afficheSimple("");
 
 	//correlation = donnee.XtX();
 	
 	composantes = vecteurPropre.getProjectionOrth(correlation);
+	//composantes.afficheSimple("");
 
 	MatR temp=valeurPropre.vectToDiag();
+	//temp.afficheSimple("");
+
 	MatR temp2=temp.sqrt().inverse();
-	MatR comp2=composantes.multMat(temp2);
-	variable=donnee.transpose().multMat(comp2);
+	//temp2.afficheSimple("");
+
+	MatR comp2=(composantes).multMat(temp2);
+	//comp2.afficheSimple("");
+	variable=donnee.multMat(comp2.transpose());
 
 
     }
@@ -65,8 +71,8 @@ class Acp {
 
     public static void main (String [] args) throws Exception {
 	MatR donnee=new MatR (args[0]);
-	donnee.afficheSimple("");
-	Acp acp=new Acp (donnee,true,false,new MatR(1,donnee.n(),1));
+	//donnee.afficheSimple("");
+	Acp acp=new Acp (donnee,true,true,new MatR(1,donnee.n(),1));
 	(acp.valeurPropre).afficheSimple("toto");
     }	
 }
