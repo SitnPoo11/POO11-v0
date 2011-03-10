@@ -4,6 +4,7 @@ dat = read("/home/Bart/Documents/M2SITN/POO/github/Tests/data1.txt" , -1 , 7) ;
 dat_barre = sum(dat,1)/size(dat,1) ;
 dat = dat - dat_barre(ones(size(dat,1),:),:) ;
 
+//
 cor = dat'*dat/size(dat,1) ;
 
 valP = spec(cor) ; //valeur propre

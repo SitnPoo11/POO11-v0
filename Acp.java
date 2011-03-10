@@ -18,6 +18,7 @@ class Acp {
     MatR composantes ;
 
     MatR variable;
+
     public Acp() {} 
 
     public Acp(MatR m,boolean b1,boolean b2,MatR pd) {
@@ -31,48 +32,27 @@ class Acp {
 	    donnee = donnee.centrerP(ponderation);
 	if (reduit)
 	    donnee = donnee.reduire();
+	
+	// calcul des corrélations 
+	correlation = donnee.XtX().multCste( (double)1.0 / ( (double) donnee.n() ) );;
+
 	// calcul des valeurs propres et vecteurs propres
-	//System.out.println("nbr de lignes :"+donnee.n());
-	correlation = donnee.XtX();
-	//System.out.println(1.0/( (double) donnee.n() ) );
-	double d = 1.0/( (double) donnee.n() ) ;
-	//System.out.println(d);
-	correlation = correlation.multCste(d);
 	vecteurPropre = new MatR(donnee.n(),donnee.p(),0);
-	valeurPropre = new MatR(donnee.p(),7,0);
-
-	propre(vecteurPropre,valeurPropre);
+	valeurPropre = new MatR(donnee.p(),1,0);
+	correlation.diag(vecteurPropre,valeurPropre);
 	
-	//valeurPropre.afficheSimple("");
-
-	//correlation = donnee.XtX();
-	
+	// 
 	composantes = vecteurPropre.getProjectionOrth(correlation);
-	//composantes.afficheSimple("");
-
-	MatR temp=valeurPropre.vectToDiag();
-	//temp.afficheSimple("");
-
-	MatR temp2=temp.sqrt().inverse();
-	//temp2.afficheSimple("");
-
-	MatR comp2=(composantes).multMat(temp2);
-	//comp2.afficheSimple("");
-	variable=donnee.multMat(comp2.transpose());
-
+	variable = donnee.multMat( composantes.multMat( valeurPropre.vectToDiag().sqrt().inverse() ).transpose() );
 
     }
-
-    public void propre(MatR m1,MatR m2) {
-	correlation.diag(m1,m2);
-       
-    }
-    
 
     public static void main (String [] args) throws Exception {
 	MatR donnee=new MatR (args[0]);
-	//donnee.afficheSimple("");
 	Acp acp=new Acp (donnee,true,true,new MatR(1,donnee.n(),1));
-	(acp.valeurPropre).afficheSimple("toto");
+	System.out.print("\n");
+	acp.correlation.afficheSimple(" Corrélation :");
+	acp.valeurPropre.afficheSimple(" Valeurs Propres :");
+	acp.vecteurPropre.afficheSimple(" Vecteurs Propres :");
     }	
 }
