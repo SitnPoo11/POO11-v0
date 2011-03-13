@@ -1,5 +1,5 @@
 /** Avant de compiler ce fichier, taper dans le terminal :
-    export CLASSPATH = ..:.;
+    export CLASSPATH=..:.;
 **/
 
 /** 
