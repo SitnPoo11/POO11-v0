@@ -78,6 +78,8 @@ public class TestMatR1{
 	 **/
 
 
+	/** Vérification de quelques fonctions de MatR.
+	 **/
 	mat7.minColonnes().afficheSimple("Min colonnes de mat7");  // Vecteur ligne contenant pour chaque colonne de la matrice son minimum
 	MatR mat10 = new MatR(1,3,1);
 	mat10.set(1,3,-1);
@@ -107,14 +109,51 @@ public class TestMatR1{
 	MatR mat13 = new MatR(tab5);
 	mat13.racineCarree();
 	mat13.afficheSimple("Vérification");
+
 	MatR mat14 = mat7.moyenneColonnes();
 	mat14.afficheSimple("Moyenne de chaque colonnes");
-	mat7.varianceColonnes().afficheSimple("Variance des colonnes");
-	double[][] tab6 = {{(mat7.get(1,1)-mat14.get(1,1))*(mat7.get(1,1)-mat14.get(1,1))+(mat7.get(2,1)-mat14.get(1,1))*(mat7.get(2,1)-mat14.get(1,1))+(mat7.get(3,1)-mat14.get(1,1))*(mat7.get(3,1)-mat14.get(1,1)),(mat7.get(1,2)-mat14.get(1,2))*(mat7.get(1,2)-mat14.get(1,2))+(mat7.get(2,2)-mat14.get(1,2))*(mat7.get(2,2)-mat14.get(1,2))+(mat7.get(3,2)-mat14.get(1,2))*(mat7.get(3,2)-mat14.get(1,2)),(mat7.get(1,3)-mat14.get(1,3))*(mat7.get(1,3)-mat14.get(1,3))+(mat7.get(2,3)-mat14.get(1,3))*(mat7.get(2,3)-mat14.get(1,3))+(mat7.get(3,3)-mat14.get(1,3))*(mat7.get(3,3)-mat14.get(1,3))}};
+	double[][] tab6 = {{(mat7.get(1,1)+mat7.get(2,1)+mat7.get(3,1))/3,(mat7.get(1,2)+mat7.get(2,2)+mat7.get(3,2))/3,(mat7.get(1,3)+mat7.get(2,3)+mat7.get(3,3))/3}};
 	MatR mat15 = new MatR(tab6);
 	mat15.afficheSimple("Vérification");
 
+	mat7.varianceColonnes().afficheSimple("Variance des colonnes");
+	double[][] tab7 = {{((mat7.get(1,1)-mat14.get(1,1))*(mat7.get(1,1)-mat14.get(1,1))+(mat7.get(2,1)-mat14.get(1,1))*(mat7.get(2,1)-mat14.get(1,1))+(mat7.get(3,1)-mat14.get(1,1))*(mat7.get(3,1)-mat14.get(1,1)))/3,((mat7.get(1,2)-mat14.get(1,2))*(mat7.get(1,2)-mat14.get(1,2))+(mat7.get(2,2)-mat14.get(1,2))*(mat7.get(2,2)-mat14.get(1,2))+(mat7.get(3,2)-mat14.get(1,2))*(mat7.get(3,2)-mat14.get(1,2)))/3,((mat7.get(1,3)-mat14.get(1,3))*(mat7.get(1,3)-mat14.get(1,3))+(mat7.get(2,3)-mat14.get(1,3))*(mat7.get(2,3)-mat14.get(1,3))+(mat7.get(3,3)-mat14.get(1,3))*(mat7.get(3,3)-mat14.get(1,3)))/3}};
+	MatR mat16 = new MatR(tab7);
+	mat16.afficheSimple("Vérification");
 
+	double[][] tab8 = {{mat7.get(1,1)-mat14.get(1,1),mat7.get(1,2)-mat14.get(1,2),mat7.get(1,3)-mat14.get(1,3)},{mat7.get(2,1)-mat14.get(1,1),mat7.get(2,2)-mat14.get(1,2),mat7.get(2,3)-mat14.get(1,3)},{mat7.get(3,1)-mat14.get(1,1),mat7.get(3,2)-mat14.get(1,2),mat7.get(3,3)-mat14.get(1,3)}};
+	MatR mat18 = new MatR(tab8);
+	mat7.centrer().afficheSimple("Matrice centrée en colonnes");  // La fonction centrer() modifie la matrice !
+	mat18.afficheSimple("Vérification");
+
+	double[][] tab9 = {{mat7.get(1,1)+mat14.get(1,1),mat7.get(1,2)+mat14.get(1,2),mat7.get(1,3)+mat14.get(1,3)},{mat7.get(2,1)+mat14.get(1,1),mat7.get(2,2)+mat14.get(1,2),mat7.get(2,3)+mat14.get(1,3)},{mat7.get(3,1)+mat14.get(1,1),mat7.get(3,2)+mat14.get(1,2),mat7.get(3,3)+mat14.get(1,3)}};
+	MatR mat19 = new MatR(tab9);
+	mat19.afficheSimple("Vérification");
+
+	mat16.racineCarree();  // On passe de la variance à l'écart-type
+	double[][] tab10 = {{mat19.get(1,1)/mat16.get(1,1),mat19.get(1,2)/mat16.get(1,2),mat19.get(1,3)/mat16.get(1,3)},{mat19.get(2,1)/mat16.get(1,1),mat19.get(2,2)/mat16.get(1,2),mat19.get(2,3)/mat16.get(1,3)},{mat19.get(3,1)/mat16.get(1,1),mat19.get(3,2)/mat16.get(1,2),mat19.get(3,3)/mat16.get(1,3)}};
+	MatR mat20 = new MatR(tab10);
+	mat19.reduire().afficheSimple("Matrice réduite en colonnes");  // La fonction centrer() modifie la matrice !
+	mat20.afficheSimple("Vérification");
+
+	MatR mat21 = new MatR(3,3,1);
+	mat21.set(1,1,15);  
+	mat21.set(1,3,-1);
+	mat21.set(2,1,5);
+	mat21.set(3,3,20);
+	mat21.afficheSimple("mat21");
+	double[][] tab11 = {{251,21,10},{21,3,20},{10,20,402}};   // Matrice calculée à part
+	MatR mat22 = new MatR(tab11);
+	mat21.XtX().afficheSimple("Produit de la matrice transposée par elle-même");
+	mat22.afficheSimple("Vérification");
+
+	MatR q = new MatR();
+	MatR lbd = new MatR();
+	mat21.diag(q,lbd);
+	mat21.afficheSimple("Matrice");
+	q.afficheSimple("Vecteurs propres");
+	lbd.afficheSimple("Valeurs propres");
+	double[][] tab12 = {{},{},{}};   // Matrice calculée à part
 
     }
 
