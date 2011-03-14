@@ -17,7 +17,7 @@ class Acp {
 
     MatR composantes ;
 
-    MatR variable;
+    MatR variable; // coordonnées par rapport aux axes principaux
 
     public Acp() {} 
 
@@ -41,7 +41,7 @@ class Acp {
 	valeurPropre = new MatR(donnee.p(),1,0);
 	correlation.diag(vecteurPropre,valeurPropre);
 	
-	// 
+	// calcul des coordonnées par arpport aux axes principaux
 	composantes = vecteurPropre.getProjectionOrth(correlation);
 	variable = donnee.multMat( composantes.multMat( valeurPropre.vectToDiag().sqrt().inverse() ).transpose() );
 
@@ -54,5 +54,7 @@ class Acp {
 	acp.correlation.afficheSimple(" Corrélation :");
 	acp.valeurPropre.afficheSimple(" Valeurs Propres :");
 	acp.vecteurPropre.afficheSimple(" Vecteurs Propres :");
+	acp.composantes.afficheSimple(" Composantes :");
+	acp.variable.afficheSimple(" Variables :");
     }	
 }
