@@ -1,13 +1,13 @@
 Encodage UTF8 pour ce fichier
 
 Ce dépôt contient :
-	* junit-4.8.2.jar pour réaliser des tests unitaires
-	* MatR.java
-	* Form.java
+       * junit-4.8.2.jar pour réaliser des tests unitaires
+       * MatR.java
+       * Form.java
 
-i.e. le strict nécessaire pour commencer à se familiariser avec les tests unitaires sur la classe MatR et poursuivre sur les calculs relatifs à l'ACP. 
+i.e. le strict nécessaire pour commencer à se familiariser avec les tests unita
 
-Pour se lancer sur les tests, écrire un fichier de test, eg TestMatR.java, puis le compiler et lancer les tests comme suit (aux détails de compilation de MatR près) :
+Pour se lancer sur les tests, écrire un fichier de test, eg TestMatR.java, puis
 ...edition...
 emacs TestClasse.java
 ...compile...
@@ -16,3 +16,14 @@ javac -cp .:junit-4.8.2.jar Classe TestClasse
 java  -cp .:junit-4.8.2.jar junit.textui.TestRunner TestClasse
 
 
+
+ 1348  java -cp .:junit-4.8.2.jar:.. junit.textui.TestRunner TestMatR
+ 1349  javac -cp junit-4.8.2.jar:.:.. ../MatR.java ../Fonction.java TestMatR.java
+ 1350  java -cp .:junit-4.8.2.jar:.. junit.textui.TestRunner TestMatR
+ 1353  git add TestMatR.java 
+ 1355  git add ../Fonction.java
+ 1358  vi TestMatR.java 
+ 1359  vi TestMatR.java 
+ 1360  history | grep java
+ 1361  history | grep java | tail 
+ 1362  history | grep java | tail > ../README 
