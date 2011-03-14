@@ -19,6 +19,8 @@ class Acp {
 
     MatR variable; // coordonnées par rapport aux axes principaux
 
+    MatR contribution ; //
+
     public Acp() {} 
 
     public Acp(MatR m,boolean b1,boolean b2,MatR pd) {
@@ -45,6 +47,9 @@ class Acp {
 	composantes = vecteurPropre.getProjectionOrth(correlation);
 	variable = donnee.multMat( composantes.multMat( valeurPropre.vectToDiag().sqrt().inverse() ).transpose() );
 
+	// calcul des contributions 
+	contribution = new MatR (donnee.n() , donnee.p() , 0  );	
+		
     }
 
     public static void main (String [] args) throws Exception {
