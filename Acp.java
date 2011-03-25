@@ -24,6 +24,17 @@ class Acp {
 
     MatR cos2 ;
     public Acp() {} 
+    
+    public Acp(MatR m,boolean b1,boolean b2){
+	MatR pd=new MatR(1,donnee.n(),1);
+	this(m,b1,b2,pd);
+    }
+
+    public Acp(MatR m){
+	MatR pd=new MatR(1,donnee.n(),1);
+	this(m,true,true,pd);
+    }
+    
 
     public Acp(MatR m,boolean b1,boolean b2,MatR pd) {
 	donnee = m;
