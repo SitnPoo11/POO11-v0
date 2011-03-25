@@ -147,13 +147,15 @@ public class TestMatR1{
 	mat21.XtX().afficheSimple("Produit de la matrice transposée par elle-même");
 	mat22.afficheSimple("Vérification");
 
+	double[][] tab12 = {{109,-28,-29},{54,2,-34},{-9,-12,49}};  
+    	MatR mat23 = new MatR(tab12);
 	MatR q = new MatR();
 	MatR lbd = new MatR();
-	mat21.diag(q,lbd);
-	mat21.afficheSimple("Matrice");
+	mat23.diag(q,lbd);
+	mat23.afficheSimple("Matrice");
 	q.afficheSimple("Vecteurs propres");
 	lbd.afficheSimple("Valeurs propres");
-	double[][] tab12 = {{},{},{}};   // Matrice calculée à part
+	double[][] tab13 = {{50,0,0},{0,10,0},{0,0,100}};   // Matrice calculée à part
 
     }
 
