@@ -26,13 +26,12 @@ class Acp {
     public Acp() {} 
     
     public Acp(MatR m,boolean b1,boolean b2){
-	MatR pd=new MatR(1,donnee.n(),1);
-	this(m,b1,b2,pd);
+	this(m,b1,b2,new MatR(1,m.n(),1));
     }
 
     public Acp(MatR m){
-	MatR pd=new MatR(1,donnee.n(),1);
-	this(m,true,true,pd);
+	this(m,true,true,new MatR(1,m.n(),1));
+	
     }
     
 
