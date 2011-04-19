@@ -133,7 +133,7 @@ public class TestMatR1{
 	mat16.racineCarree();  // On passe de la variance à l'écart-type
 	double[][] tab10 = {{mat19.get(1,1)/mat16.get(1,1),mat19.get(1,2)/mat16.get(1,2),mat19.get(1,3)/mat16.get(1,3)},{mat19.get(2,1)/mat16.get(1,1),mat19.get(2,2)/mat16.get(1,2),mat19.get(2,3)/mat16.get(1,3)},{mat19.get(3,1)/mat16.get(1,1),mat19.get(3,2)/mat16.get(1,2),mat19.get(3,3)/mat16.get(1,3)}};
 	MatR mat20 = new MatR(tab10);
-	mat19.reduire().afficheSimple("Matrice réduite en colonnes");  // La fonction centrer() modifie la matrice !
+	mat19.reduire().afficheSimple("Matrice réduite en colonnes");  // La fonction reduire() modifie la matrice !
 	mat20.afficheSimple("Vérification");
 
 	MatR mat21 = new MatR(3,3,1);
@@ -147,7 +147,7 @@ public class TestMatR1{
 	mat21.XtX().afficheSimple("Produit de la matrice transposée par elle-même");
 	mat22.afficheSimple("Vérification");
 
-	double[][] tab12 = {{109,-28,-29},{54,2,-34},{-9,-12,49}};  
+	double[][] tab12 = {{5,2,9,-6},{2,5,-6,9},{9,-6,5,2},{-6,9,2,5}};  
     	MatR mat23 = new MatR(tab12);
 	MatR q = new MatR();
 	MatR lbd = new MatR();
@@ -155,8 +155,13 @@ public class TestMatR1{
 	mat23.afficheSimple("Matrice");
 	q.afficheSimple("Vecteurs propres");
 	lbd.afficheSimple("Valeurs propres");
-	double[][] tab13 = {{50,0,0},{0,10,0},{0,0,100}};   // Matrice calculée à part
-
+	double[][] tab13 = {{18},{10},{4},{-12}};   
+	MatR mat24 = new MatR(tab13);
+	double[][] tab14 = {{0.5,0.5,-0.5,0.5},{-0.5,0.5,-0.5,-0.5},{0.5,0.5,0.5,-0.5},{-0.5,0.5,0.5,0.5}};
+	MatR mat25 = new MatR(tab14);
+        // Matrices calculées à part
+	mat24.afficheSimple("Vérification des valeurs propres");
+	mat25.afficheSimple("Vérification des vecteurs propres");
     }
 
 }
